@@ -13,10 +13,7 @@ export const createVue3MicroApp = (name: string, appFactory: () => Vue3App): Mic
 
       console.log('Function: mount =>', containerId)
 
-      const div = document.createElement('div')
-      div.id = 'test-app'
-      document.getElementById(containerId)!.appendChild(div)
-      app.mount('#test-app')
+      app.mount(`#${containerId}`)
     },
 
     // unmount micro frontend function

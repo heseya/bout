@@ -1,7 +1,7 @@
 {
   "name": "microfront-lib",
-  "version": "1.0.0",
-  "main": "./dist/index.js",
+  "version": "0.0.1",
+  "main": "./src/index.ts",
   "license": "MIT",
   "scripts": {
     "build": "tsc"
