@@ -1,10 +1,12 @@
-export const installApp = async (host: string) => {
+import { MicroApp } from '../interfaces/MicroApp'
+import { onRegister } from '../hooks/onRegister'
+
+export const installApp = async (host: string): Promise<MicroApp> => {
   const { document } = window
 
   const scriptId = `micro-frontend-script-${host}`
   if (document.getElementById(scriptId)) {
-    console.warn(`App ${host} is aleady installed`)
-    return
+    return Promise.reject(`App ${host} is aleady installed`)
   }
 
   const response = await fetch(`${host}/asset-manifest.json`)
@@ -22,4 +24,11 @@ export const installApp = async (host: string) => {
 
   script.src = `${host}${appSrc}`
   document.head.appendChild(script)
+
+  return new Promise((resolve) => {
+    onRegister((app) => {
+      // app.host = host
+      resolve(app)
+    })
+  })
 }
