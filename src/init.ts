@@ -1,7 +1,5 @@
-import { initializeCommunicationChannels } from './services/communication'
 import { initializeRepository } from './services/registry'
 
-export const init = () => {
+export const init = (): void => {
   initializeRepository()
-  initializeCommunicationChannels()
 }

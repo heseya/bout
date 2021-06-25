@@ -1,5 +1,5 @@
 import { getRegistry } from '../services/registry'
 
-export const isParentApp = () => {
+export const isParentApp = (): boolean => {
   return !!getRegistry()
 }

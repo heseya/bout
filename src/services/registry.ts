@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-export const initializeRepository = () => {
+export const initializeRepository = (): void => {
   if (!window.$microApps) window.$microApps = []
 }
 

@@ -1,5 +1,6 @@
 import { MicroApp } from '../interfaces/MicroApp'
-import { onRegistered } from '../hooks/onRegistered'
+import { onRegistered, emitLifecycleEvent } from './lifecycle'
+import { LifecycleEvents } from '../interfaces'
 
 export const installApp = async (host: string): Promise<MicroApp> => {
   const { document } = window
@@ -24,6 +25,8 @@ export const installApp = async (host: string): Promise<MicroApp> => {
 
   script.src = `${host}${appSrc}`
   document.head.appendChild(script)
+
+  emitLifecycleEvent(LifecycleEvents.Installed, host)
 
   return new Promise((resolve) => {
     onRegistered((app) => {

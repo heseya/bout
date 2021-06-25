@@ -8,13 +8,13 @@ export class CommunicationChannel {
     this.name = channelName
   }
 
-  on<Payload>(event: string, callback: EventCallback<Payload>) {
+  on<Payload>(event: string, callback: EventCallback<Payload>): void {
     if (!this.listeners[event]) this.listeners[event] = []
 
     this.listeners[event].push(callback)
   }
 
-  emit(event: string, payload: unknown) {
+  emit(event: string, payload: unknown): void {
     this.listeners[event]?.forEach((callback) => callback(payload))
   }
 }

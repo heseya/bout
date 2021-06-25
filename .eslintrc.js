@@ -21,7 +21,7 @@ module.exports = {
     'comma-dangle': 'off',
   },
 
-  extends: ['prettier', 'plugin:prettier/recommended'],
+  extends: ['plugin:@typescript-eslint/recommended', 'prettier', 'plugin:prettier/recommended'],
 
   plugins: ['prettier'],
 }

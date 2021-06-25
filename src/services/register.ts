@@ -1,12 +1,11 @@
 import { MicroApp } from '../interfaces/MicroApp'
-import { Channel } from '../interfaces/Channels'
 import { LifecycleEvents } from '../interfaces/LifecycleEvents'
 
 import { getRegistry } from './registry'
-import { openCommunicationChannel as openChannel } from './communication'
 import { isParentApp } from '../utils/index'
+import { emitLifecycleEvent } from './lifecycle'
 
-export const registerMicroApp = <T>(microApp: MicroApp<T>) => {
+export const registerMicroApp = <T>(microApp: MicroApp<T>): void => {
   if (!isParentApp()) {
     console.warn('Parent App not found, registration is aborted')
     return
@@ -15,5 +14,5 @@ export const registerMicroApp = <T>(microApp: MicroApp<T>) => {
   const registry = getRegistry()
   registry.push(microApp)
 
-  openChannel(Channel.Broadcast).emit(LifecycleEvents.Registered, microApp)
+  emitLifecycleEvent(LifecycleEvents.Registered, microApp)
 }
