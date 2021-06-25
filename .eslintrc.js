@@ -12,7 +12,7 @@ module.exports = {
     },
   },
 
-  ignorePatterns: ['./build/**/*.*'],
+  ignorePatterns: ['build'],
 
   rules: {
     'no-console': 'warn',
