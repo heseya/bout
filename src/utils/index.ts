@@ -1,4 +1,4 @@
-import { getRegistry } from '../registry'
+import { getRegistry } from '../services/registry'
 
 export const isParentApp = () => {
   return !!getRegistry()

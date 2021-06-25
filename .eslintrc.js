@@ -7,7 +7,12 @@ module.exports = {
 
   parserOptions: {
     parser: '@typescript-eslint/parser',
+    ecmaFeatures: {
+      modules: true,
+    },
   },
+
+  ignorePatterns: ['./build/**/*.*'],
 
   rules: {
     'no-console': 'warn',

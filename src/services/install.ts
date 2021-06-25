@@ -1,5 +1,5 @@
 import { MicroApp } from '../interfaces/MicroApp'
-import { onRegister } from '../hooks/onRegister'
+import { onRegistered } from '../hooks/onRegistered'
 
 export const installApp = async (host: string): Promise<MicroApp> => {
   const { document } = window
@@ -26,8 +26,8 @@ export const installApp = async (host: string): Promise<MicroApp> => {
   document.head.appendChild(script)
 
   return new Promise((resolve) => {
-    onRegister((app) => {
-      // app.host = host
+    onRegistered((app) => {
+      app.host = host
       resolve(app)
     })
   })
