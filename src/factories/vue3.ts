@@ -8,7 +8,7 @@ import { emitLifecycleEvent } from '../services/lifecycle'
 export const createVue3MicroApp = (name: string, appFactory: () => Vue3App): MicroApp<Vue3App> => {
   let app = null as Vue3App | null
 
-  const appObject = {
+  const microApp = {
     name,
 
     // mount micro frontend function
@@ -19,7 +19,7 @@ export const createVue3MicroApp = (name: string, appFactory: () => Vue3App): Mic
 
       app.mount(`#${containerId}`)
 
-      emitLifecycleEvent(LifecycleEvents.Mounted, appObject)
+      emitLifecycleEvent(LifecycleEvents.Mounted, microApp)
     },
 
     // unmount micro frontend function
@@ -30,7 +30,7 @@ export const createVue3MicroApp = (name: string, appFactory: () => Vue3App): Mic
       app.unmount()
       app = null
 
-      emitLifecycleEvent(LifecycleEvents.Unmounted, appObject)
+      emitLifecycleEvent(LifecycleEvents.Unmounted, microApp)
     },
 
     getApp() {
@@ -38,5 +38,5 @@ export const createVue3MicroApp = (name: string, appFactory: () => Vue3App): Mic
     },
   }
 
-  return appObject
+  return microApp
 }
