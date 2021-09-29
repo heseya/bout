@@ -3,6 +3,7 @@ export * from './interfaces'
 export * from './services/install'
 export * from './services/register'
 export * from './services/registry'
+export * from './services/communication'
 export * from './services/lifecycle'
 
 export * from './utils'

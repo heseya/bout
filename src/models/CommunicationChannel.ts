@@ -14,7 +14,7 @@ export class CommunicationChannel {
     this.listeners[event].push(callback)
   }
 
-  emit(event: string, payload: unknown): void {
+  emit<T = unknown>(event: string, payload?: T): void {
     this.listeners[event]?.forEach((callback) => callback(payload))
   }
 }
