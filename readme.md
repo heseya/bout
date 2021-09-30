@@ -11,7 +11,7 @@ Any framework for the parent app is supported! But for the microfrontend, only `
 ## Installation
 
 ```bash
-$ yarn add pieces-js
+$ yarn add bout
 ```
 
 ## Getting started
@@ -21,7 +21,7 @@ $ yarn add pieces-js
 In your parent app, you need to initialize the library:
 
 ```ts
-import { initMicroApps } from 'pieces-js'
+import { initMicroApps } from 'bout'
 
 initMicroApps()
 ```
@@ -33,7 +33,7 @@ On the other hand, in your child app, you need to initialize the microfrontend:
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import { createVue3MicroApp, registerMicroApp } from 'microfront-lib'
+import { createVue3MicroApp, registerMicroApp } from 'bout'
 
 const appFactory = () => {
   return createApp(App)
