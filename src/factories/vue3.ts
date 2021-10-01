@@ -1,9 +1,12 @@
-import { App as Vue3App } from 'vue'
-
 import { LifecycleEvents } from '../interfaces'
 import { MicroApp } from '../interfaces/MicroApp'
 
 import { emitLifecycleEvent } from '../services/lifecycle'
+
+interface Vue3App {
+  mount(rootContainer: any, isHydrate?: boolean, isSVG?: boolean): any
+  unmount(): void
+}
 
 export const createVue3MicroApp = (name: string, appFactory: () => Vue3App): MicroApp<Vue3App> => {
   let app = null as Vue3App | null

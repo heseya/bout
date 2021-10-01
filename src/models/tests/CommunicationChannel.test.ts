@@ -76,6 +76,15 @@ describe('', () => {
     expect(response).toBe(true)
   })
 
+  it('Channel async request should receive a response', async () => {
+    const channel = new CommunicationChannel('test')
+
+    channel.on('reqEvent', () => new Promise((resolve) => setTimeout(() => resolve(true), 100)))
+
+    const response = await channel.request<boolean>('reqEvent')
+    expect(response).toBe(true)
+  })
+
   it('Channel request timeout ongoing request when no response', async () => {
     const channel = new CommunicationChannel('test')
 
