@@ -1,9 +1,32 @@
 {
   "name": "bout",
+  "description": "Tiny framework for micro frontend installation and communication. Creates simple way to inject a microfrontend pattern into existing SPA application.",
   "version": "0.1.1",
+  "keywords": [
+    "bout",
+    "microfrontend",
+    "library"
+  ],
   "author": {
-    "name": "Heseya"
+    "name": "Heseya",
+    "email": "info@heseya.com",
+    "url": "https://heseya.com/"
   },
+  "contributors": [
+    {
+      "name": "Artur Mędrygał",
+      "email": "artur@heseya.com",
+      "url": "https://amedrygal.pl/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heseya/bout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/heseya/bout/issues"
+  },
+  "homepage": "https://github.com/heseya/bout",
   "license": "MIT",
   "main": "dist/index.umd.js",
   "types": "dist/index.d.ts",

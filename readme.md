@@ -1,8 +1,16 @@
-# Bout
+# Bout ![Bout](https://img.shields.io/npm/v/bout?color=blue&logo=Bout) ![Licence](https://img.shields.io/npm/l/bout)
 
 Tiny framework for micro frontend installation and communication. Creates simple way to inject a microfrontend pattern into existing SPA application.
 
-Any framework for the parent app is supported! But for the microfrontend, only `Vue3` is supported for now.
+| Framework | Parent App                                              | Microfrontend                                         |
+| --------- | ------------------------------------------------------- | ----------------------------------------------------- |
+| `Vue2`    | ![Yes](https://img.shields.io/badge/-Yes-brightgreen)   | ![Not yet](https://img.shields.io/badge/-Not_yet-red) |
+| `Vue3`    | ![Yes](https://img.shields.io/badge/-Possible-yellow)\* | ![Yes](https://img.shields.io/badge/-Yes-brightgreen) |
+| `React`   | ![Yes](https://img.shields.io/badge/-Possible-yellow)\* | ![Not yet](https://img.shields.io/badge/-Not_yet-red) |
+| `Angular` | ![Yes](https://img.shields.io/badge/-Possible-yellow)\* | ![Not yet](https://img.shields.io/badge/-Not_yet-red) |
+| `Svetle`  | ![Yes](https://img.shields.io/badge/-Possible-yellow)\* | ![Not yet](https://img.shields.io/badge/-Not_yet-red) |
+
+<small>\* - Framework should work flawlessly for any framework in the parent app, but not everywhere this was tested</small>
 
 ## Name
 
