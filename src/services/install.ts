@@ -10,7 +10,9 @@ export const installApp = async (host: string): Promise<MicroApp> => {
     return Promise.reject(`App ${host} is aleady installed`)
   }
 
-  const response = await fetch(`${host}/asset-manifest.json`)
+  const trimedHost = host.endsWith('/') ? host.slice(0, -1) : host
+
+  const response = await fetch(`${trimedHost}/asset-manifest.json`)
   const manifest = await response.json()
 
   const script = document.createElement('script')

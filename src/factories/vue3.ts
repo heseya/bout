@@ -1,37 +1,43 @@
 import { LifecycleEvents } from '../interfaces'
 import { MicroApp } from '../interfaces/MicroApp'
+import { Mountable } from '../interfaces/Mountable'
 
 import { emitLifecycleEvent } from '../services/lifecycle'
 
 interface Vue3App {
-  mount(rootContainer: any, isHydrate?: boolean, isSVG?: boolean): any
+  mount(rootContainer: Mountable, isHydrate?: boolean, isSVG?: boolean): any
   unmount(): void
 }
 
 export const createVue3MicroApp = (name: string, appFactory: () => Vue3App): MicroApp<Vue3App> => {
-  let app = null as Vue3App | null
+  let app: Vue3App | null = null
+  let appContainer: Mountable | null = null
 
-  const microApp = {
+  const microApp: MicroApp<Vue3App> = {
     name,
 
     // mount micro frontend function
-    mount(containerId: string) {
+    mount(container: Mountable) {
       app = appFactory()
+      appContainer = container
 
-      console.log('Function: mount =>', containerId)
+      console.log('Function: mount =>', container)
 
-      app.mount(`#${containerId}`)
+      app.mount(container)
 
       emitLifecycleEvent(LifecycleEvents.Mounted, microApp)
     },
 
     // unmount micro frontend function
-    unmount(containerId: string) {
+    unmount() {
       if (!app) return
 
-      console.log('Function: unmount =>', containerId)
+      console.log('Function: unmount =>', appContainer)
+
       app.unmount()
+
       app = null
+      appContainer = null
 
       emitLifecycleEvent(LifecycleEvents.Unmounted, microApp)
     },
