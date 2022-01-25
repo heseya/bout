@@ -53,29 +53,33 @@ registerMicroApp(microApp)
 
 Second importation is to make sure, that child app creates the public `asset-manifest.json` file. It should be available in the `public` folder.
 
-For `Vite`, you can do this in `vite-config.ts` using `rollup-plugin-output-manifest`:
+For `Vite`, you should do this mannualy, with following settings in `vite-config.ts`:
 
 ```ts
 import { defineConfig } from 'vite'
-import outputManifest from 'rollup-plugin-output-manifest'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   // Other properties here...
   build: {
-    manifest: true,
-    cssCodeSplit: true,
+    manifest: false,
+    cssCodeSplit: false,
     lib: {
-      name: 'Example',
+      name: 'Test',
       entry: './src/main.ts',
       fileName: 'bundle',
     },
-    rollupOptions: {
-      plugins: [outputManifest({ fileName: 'asset-manifest.json', filter: () => true })],
-      inlineDynamicImports: true,
-    },
-  },
+  },,
 })
+```
+
+`asset-manifest.json` will look like this:
+
+```json
+{
+  "main.js": "bundle.umd.js",
+  "style.css": "style.css"
+}
 ```
 
 ### Connecting the apps

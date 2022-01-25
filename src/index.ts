@@ -1,6 +1,7 @@
 export * from './interfaces'
 
 export * from './services/install'
+export * from './services/uninstall'
 export * from './services/register'
 export * from './services/registry'
 export * from './services/communication'
