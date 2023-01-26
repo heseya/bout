@@ -7,6 +7,7 @@ import { emitLifecycleEvent } from './lifecycle'
 
 export const registerMicroApp = <T>(microApp: MicroApp<T>): void => {
   if (!isParentApp()) {
+    // eslint-disable-next-line no-console
     console.warn('Parent App not found, registration is aborted')
     return
   }

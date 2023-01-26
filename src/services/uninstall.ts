@@ -1,4 +1,6 @@
-import { emitLifecycleEvent, getRegistry, LifecycleEvents } from '..'
+import { emitLifecycleEvent } from './lifecycle'
+import { getRegistry } from './registry'
+import { LifecycleEvents } from '../interfaces/LifecycleEvents'
 
 export const uninstallApp = (host: string): void => {
   const registry = getRegistry()

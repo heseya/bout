@@ -5,6 +5,7 @@ import { Mountable } from '../interfaces/Mountable'
 import { emitLifecycleEvent } from '../services/lifecycle'
 
 interface Vue3App {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   mount(rootContainer: Mountable, isHydrate?: boolean, isSVG?: boolean): any
   unmount(): void
 }
@@ -21,6 +22,7 @@ export const createVue3MicroApp = (name: string, appFactory: () => Vue3App): Mic
       app = appFactory()
       appContainer = container
 
+      // eslint-disable-next-line no-console
       console.log('Function: mount =>', container)
 
       app.mount(container)
@@ -32,6 +34,7 @@ export const createVue3MicroApp = (name: string, appFactory: () => Vue3App): Mic
     unmount() {
       if (!app) return
 
+      // eslint-disable-next-line no-console
       console.log('Function: unmount =>', appContainer)
 
       app.unmount()

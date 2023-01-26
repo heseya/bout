@@ -2,7 +2,7 @@ import { MicroApp } from '../interfaces/MicroApp'
 import { onRegistered, emitLifecycleEvent } from './lifecycle'
 import { LifecycleEvents } from '../interfaces'
 
-const REGISTER_TIMEOUT = 500
+const REGISTER_TIMEOUT = 5000
 
 type Manifest = Record<string, string>
 
@@ -28,6 +28,8 @@ const createStyleElement = (host: string, id: string, manifest: Manifest) => {
   link.id = id
   const appSrc = manifest['style.css'] || manifest['main.css']
 
+  if (!appSrc) return null
+
   link.rel = 'stylesheet'
   // TODO: remove Math.random?
   link.href = `${host}/${appSrc}?${Math.random()}`
@@ -47,21 +49,24 @@ export const installApp = async (
     return Promise.reject(`App ${host} is aleady installed`)
   }
 
-  const response = await fetch(`${host}/asset-manifest.json`)
-  const manifest: Manifest = await response.json()
-
   // Trim host string
   const trimmedHost = host.endsWith('/') ? host.slice(0, -1) : host
+
+  const response = await fetch(`${trimmedHost}/asset-manifest.json`)
+  const manifest: Manifest = await response.json()
+
   const script = createScriptElement(trimmedHost, scriptId, manifest)
   const style = createStyleElement(trimmedHost, styleLinkId, manifest)
 
   target.appendChild(script)
-  target.appendChild(style)
+  if (style) target.appendChild(style)
 
   emitLifecycleEvent(LifecycleEvents.Installed, host)
 
   return new Promise((resolve, reject) => {
     onRegistered((app) => {
+      // TODO: check if registered app is the same as installed app !!!!
+      // Otherwise, when multiple apps are installed at the same time, they gonna be mixed up
       app.host = host
       resolve(app)
     })
