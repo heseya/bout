@@ -1,7 +1,7 @@
 {
   "name": "bout",
   "description": "Tiny framework for micro frontend installation and communication. Creates simple way to inject a microfrontend pattern into existing SPA application.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "keywords": [
     "bout",
     "microfrontend",
